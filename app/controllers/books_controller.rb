@@ -6,6 +6,7 @@ class BooksController < ApplicationController
 
     @book_on_sale = Book.includes(:author).where(:on_sale => true).order("sale_price ASC").page(params[:page]).per(4)
 
+    @books = Book.includes(:author).order("title ASC").page(params[:page]).per(21)
     add_breadcrumbs("Books")
   end
 

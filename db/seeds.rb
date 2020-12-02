@@ -16,6 +16,8 @@ books.each do |b|
 
  authors = Author.find_or_create_by(name: b["authors"])
 
+ genres = Genre.find_or_create_by(name: b['genre'])
+
  if authors&.valid?
   authors.books.create(
     title: b['original_title'],
@@ -25,8 +27,8 @@ books.each do |b|
     price: Faker::Number.decimal(l_digits: rand(1..2), r_digits: 2),
     rating: b['average_rating'],
     cover_art: b['image_url'],
-    genre: b['genre'],
-    on_sale: Faker::Boolean.boolean
+    on_sale: Faker::Boolean.boolean,
+    genre: genres.name
   )
 
 end

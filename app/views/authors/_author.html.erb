@@ -1,0 +1,19 @@
+<div class="column mt-5">
+<h2 class="title is-2">Authors</h2>
+<ol class="ml-5">
+
+<% @authors.each do |author| %>
+<li>
+  <%= link_to author.name, author %>
+  <em>(<%= pluralize author.books.count, "Books" %>)</em>
+</li>
+<% end %>
+
+</ol>
+
+<div class="columns is-centered mt-5">
+  <div class="column is-half has-text-centered">
+    <%= paginate(@authors) %>
+  </div>
+</div>
+</div>

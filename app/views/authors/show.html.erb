@@ -1,0 +1,15 @@
+<div class="column mt-5">
+   <h2 class="title is-2 mt-5"><%= @author.name %></h2>
+   <p class="mb-5">
+      This author wrote <%= @author.books.count %> of the top 100 books.
+   </p>
+   <div class="content">
+      <ul>
+         <% @author.books.each do |book| %>
+         <li><%= link_to book.title, book %></li>
+         <% end %>
+      </ul>
+   </div>
+</div>
+<div class="has-text-right"><%= link_to '...Go Back', root_path %></div>
+</div>

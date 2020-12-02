@@ -1,0 +1,51 @@
+<div class="column mt-5">
+<div class="card mt-5">
+   <div class="card-content mb-5">
+      <div class="media">
+         <div class="media-left">
+            <figure class="image">
+               <%= image_tag(@book.cover_art, :size => "98x160") %>
+            </figure>
+         </div>
+         <div class="media-content">
+            <p class="title is-1"><%= @book.title %></p>
+            <p class="subtitle is-4"><%= link_to @book.author.name, @book.author %></p>
+            <p class="is-7">ISBN: <%= @book.isbn %></p>
+            <p class="is-7">Year Published: <%= @book.published_year %> | Genre: <%= @book.genre %> | Rating: <%= @book.rating %>/5</p>
+         </div>
+      </div>
+      <div class="content">
+         <p><%= @book.description %></p>
+      </div>
+   </div>
+   <div class="card-footer">
+      <% if @book.on_sale %>
+      <p class="card-footer-item is-size-6 price-box">
+         <span class="mr-1">Price:</span> <span class="mr-1"><del><%= number_to_currency(@book.price) %></del></span> <span class="red-text"><%= number_to_currency(@book.sale_price) %>
+      </p>
+      <% else %>
+      <p class="card-footer-item is-size-6 price-box">
+         Price: <%= number_to_currency(@book.price) %>
+      </p>
+      <% end %>
+      <% if session[:shopping_cart][@book.id.to_s] %>
+      <%= form_with url: cart_path(@book), method: :delete do %>
+      <%= button_tag '-', {class: "card-footer-item is-size-6 add-to-cart pl-3 pr-3"} %>
+      <% end %>
+      <div class="pl-3 pr-3 pt-3"><%= session[:shopping_cart][@book.id.to_s] %></div>
+      <%= form_with url: cart_index_path do %>
+      <%= hidden_field_tag(:id, @book.id) %>
+      <%= button_tag '+', {class: "card-footer-item is-size-6 add-to-cart"} %>
+      <% end %>
+      <% else %>
+      <%= form_with url: cart_index_path do %>
+      <%= hidden_field_tag(:id, @book.id) %>
+      <%= button_tag 'Add to Cart', {class: 'card-footer-item is-size-6 add-to-cart'} %>
+      <% end %>
+      <% end %>
+   </div>
+</div>
+<div class="mt-5 mb-5">
+   <%= link_to "...Back", root_path %>
+</div>
+</div>
