@@ -1,4 +1,4 @@
-   <% books.each do |book| %>
+<% books.each do |book| %>
       <div class="card mb-5">
          <div class="card-content">
             <div class="media">
@@ -49,7 +49,11 @@
    <% end %>
 <div class="columns is-centered mt-5">
    <div class="column is-half has-text-centered">
+      <% if pagination %>
       <%= paginate(books) %>
+      <% end %>
    </div>
 </div>
+<%if pagination %>
 <div class="has-text-right mt-5"><%= link_to "...See ALL of our books", "/books" %></div>
+<%end%>

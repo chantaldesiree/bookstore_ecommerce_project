@@ -1,4 +1,4 @@
-class AuthorController < ApplicationController
+class AuthorsController < ApplicationController
   def index
     @authors = Author.ordered_by_books.page(params[:page]).per(21)
 
