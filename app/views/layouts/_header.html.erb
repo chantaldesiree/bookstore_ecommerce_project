@@ -1,0 +1,80 @@
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <%= image_tag ("TTP-Logo.png")%>
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      <a href="/books"class="navbar-item">
+        Books
+      </a>
+
+      <a href="/authors"class="navbar-item">
+        Authors
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          Genres
+        </a>
+
+        <div class="navbar-dropdown">
+          <a class="navbar-item">
+            Fiction
+          </a>
+          <a class="navbar-item">
+            Non-Ficton
+          </a>
+          <a class="navbar-item">
+            Romance
+          </a>
+          <a class="navbar-item">
+            Science Fiction
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="navbar-item">
+          <div class="control">
+            <input class="input" type="text" placeholder="Search by Book or Author">
+          </div>
+        </div>
+        <div class="navbar-item">
+          <p class="control">
+            <span class="select">
+              <select>
+                <option selected>Genres:</option>
+                <option>Fiction</option>
+                <option>Non-fiction</option>
+                <option>Romance</option>
+                <option>Sci-fi</option>
+              </select>
+            </span>
+          </p>
+        </div>
+        <div class="buttons">
+          <a class="button is-primary">
+            🔍
+          </a>
+          <a class="button is-primary">
+            Sign In
+          </a>
+          <a class="button is-primary" href="/cart">
+            🛒
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

@@ -9,4 +9,5 @@ class Author < ApplicationRecord
         .left_joins(:books)
         .group("authors.id")
         .order("book_count DESC")
+    end
 end

@@ -1,6 +1,5 @@
 class Book < ApplicationRecord
-  belongs_to :Author
-  belongs_to :OrderBook
+  belongs_to :author
 
   has_one_attached :image
 

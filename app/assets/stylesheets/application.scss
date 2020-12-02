@@ -1,1 +1,32 @@
+$background-color: #fcf6e8;
+$navbar-background-color: #E2CAA0;
+$footer-background-color: #000000;
+$link: #99002D;
+
 @import "bulma";
+
+html, body {
+  background-color: $background-color;
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+  text-align: center;
+  background-color: $footer-background-color;
+}
+
+a {
+  color: $link;
+}
+
+.nav-bar {
+  background-color: $navbar-background-color;
+}
+
+.nav-bar-item img {
+  max-height: 3rem;
+}
+
