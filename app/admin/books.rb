@@ -1,18 +1,14 @@
 ActiveAdmin.register Book do
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :title, :isbn, :published_year, :description, :rating, :price, :cover_art, :genre, :on_sale, :sale_price, :Author_id, :OrderBook_id
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:title, :isbn, :published_year, :description, :rating, :price, :cover_art, :genre, :on_sale, :sale_price, :Author_id, :OrderBook_id]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
+  permit_params :title, :isbn, :published_year, :description, :rating, :price, :cover_art, :genre, :on_sale, :sale_price, :Author_id, :OrderBook_id
+
+  form do |f|
+    f.semantic_errors # shows errors on :base
+    f.inputs
+    f.inputs do
+      f.input :image, as: :file, hint: f.object.image.present? ? image_tag(f.object.image.variant(resize_to_limit: [600, 600])) : ""
+    end
+    f.actions         # adds the 'Submit' and 'Cancel' buttons
+  end
+
 end
