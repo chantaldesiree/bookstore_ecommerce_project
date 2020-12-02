@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_084702) do
+ActiveRecord::Schema.define(version: 2020_12_02_110804) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -40,16 +40,14 @@ ActiveRecord::Schema.define(version: 2020_12_02_084702) do
 
   create_table "authors", force: :cascade do |t|
     t.string "name"
-    t.integer "Book_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Book_id"], name: "index_authors_on_Book_id"
   end
 
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "isbn"
-    t.integer "published_year"
+    t.string "published_year"
     t.text "description"
     t.decimal "rating"
     t.decimal "price"
@@ -57,40 +55,11 @@ ActiveRecord::Schema.define(version: 2020_12_02_084702) do
     t.string "genre"
     t.boolean "on_sale"
     t.decimal "sale_price"
-    t.integer "Author_id", null: false
-    t.integer "OrderBook_id", null: false
+    t.integer "author_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["Author_id"], name: "index_books_on_Author_id"
-    t.index ["OrderBook_id"], name: "index_books_on_OrderBook_id"
+    t.index ["author_id"], name: "index_books_on_author_id"
   end
 
-  create_table "order_books", force: :cascade do |t|
-    t.integer "quantity"
-    t.decimal "price"
-    t.integer "Order_id", null: false
-    t.integer "Book_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["Book_id"], name: "index_order_books_on_Book_id"
-    t.index ["Order_id"], name: "index_order_books_on_Order_id"
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.decimal "sutotal"
-    t.decimal "gst"
-    t.decimal "pst"
-    t.decimal "total"
-    t.integer "OrderBook_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["OrderBook_id"], name: "index_orders_on_OrderBook_id"
-  end
-
-  add_foreign_key "authors", "Books"
-  add_foreign_key "books", "Authors"
-  add_foreign_key "books", "OrderBooks"
-  add_foreign_key "order_books", "Books"
-  add_foreign_key "order_books", "Orders"
-  add_foreign_key "orders", "OrderBooks"
+  add_foreign_key "books", "authors"
 end
