@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sutotal: 9.99
+  gst: 9.99
+  pst: 9.99
+  total: 9.99
+  OrderBook: one
+
+two:
+  sutotal: 9.99
+  gst: 9.99
+  pst: 9.99
+  total: 9.99
+  OrderBook: two
