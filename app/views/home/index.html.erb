@@ -2,15 +2,15 @@
   </div><div class="columns is-variable pt-5">
     <div class="column mt-5">
       <h2 class="title is-4 underline">New</h2>
-      <%= render partial: 'books/book', locals: { show_link: true, pagination: false, books: @book_new } %>
+      <%= render partial: 'books/book', locals: { path: "/books/new", show_link: true, pagination: false, multicolumn: false, books: @book_new } %>
 
       <h2 class="title is-4 underline">Sale</h2>
-      <%= render partial: 'books/book', locals: { show_link: true, pagination: false, books: @book_on_sale } %>
+      <%= render partial: 'books/book', locals: { path: "/books/sale", show_link: true, pagination: false, multicolumn: false, books: @book_on_sale } %>
     </div>
     <div class="column mt-5 is-three-quarters">
       <div class="is-narrow">
       <h2 class="title is-4 underline">Top-Rated</h2>
-      <%= render partial: 'books/book', locals: { show_link: true, pagination: true, books: @book_top_rated } %>
+      <%= render partial: 'books/book', locals: { path: "/books", show_link: true, pagination: true, multicolumn: true, books: @book_top_rated } %>
     </div>
       </div>
 

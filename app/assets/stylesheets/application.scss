@@ -2,6 +2,9 @@ $background-color: #fcf6e8;
 $navbar-background-color: #E2CAA0;
 $footer-background-color: #000000;
 $link: #99002D;
+$button-text-color: #ffffff;
+$primary: #99002D;
+$price-box: #00000020;
 
 @import "bulma";
 
@@ -22,6 +25,7 @@ a {
   color: $link;
 }
 
+
 .nav-bar {
   background-color: $navbar-background-color;
 }
@@ -33,4 +37,45 @@ a {
 .container-padding {
   padding: 20px 50px;
   margin: 20px 50px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-card {
+  height: 100%;
+}
+
+.side-card {
+  background-color: $navbar-background-color;
+  margin-bottom: 24px;
+}
+
+.card-content {
+  padding-bottom: 0;
+}
+
+.add-to-cart {
+  position: relative;
+  left: 0;
+  width: 100%;
+  background-color: $link;
+  color: $button-text-color;
+  text-align: center;
+}
+
+.price-box {
+  background-color: $price-box;
+}
+
+.button {
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.underline {
+  text-decoration: underline;
 }

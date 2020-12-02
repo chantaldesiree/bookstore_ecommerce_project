@@ -1,5 +1,13 @@
+<% if multicolumn %>
+<div class="columns is-1 is-multiline">
+<% end %>
 <% books.each do |book| %>
-      <div class="card mb-5">
+<% if multicolumn %>
+<div class="column is-one-third">
+   <div class="card main-card mb-5">
+      <% else %>
+      <div class="card side-card mb-5">
+         <%end%>
          <div class="card-content">
             <div class="media">
                <div class="media-left">
@@ -46,14 +54,23 @@
             <% end %>
          </div>
       </div>
+      <% if multicolumn %>
+   </div>
    <% end %>
+   <% end %>
+   <% if multicolumn %>
+</div>
+<% end %>
 <div class="columns is-centered mt-5">
    <div class="column is-half has-text-centered">
       <% if pagination %>
       <%= paginate(books) %>
       <% end %>
    </div>
+   <% if !pagination %>
+      <div class="has-text-right"><%= link_to "...See More", path %></div>
+   <% end %>
 </div>
-<%if pagination %>
-<div class="has-text-right mt-5"><%= link_to "...See ALL of our books", "/books" %></div>
-<%end%>
+<% if pagination %>
+   <div class="has-text-right mb-5"><%= link_to "...See More", path %></div>
+<% end %>
