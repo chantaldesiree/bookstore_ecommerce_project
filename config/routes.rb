@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'home/index'
   get 'cart/index'
   get 'cart/create'
   get 'cart/destroy'
