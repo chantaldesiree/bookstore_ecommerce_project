@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'book/index'
+  get 'book/show'
+  get 'book/search'
   get 'author/index'
   get 'author/show'
   devise_for :admin_users, ActiveAdmin::Devise.config
