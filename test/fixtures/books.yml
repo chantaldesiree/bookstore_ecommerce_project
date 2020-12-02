@@ -3,7 +3,7 @@
 one:
   title: MyString
   isbn: MyString
-  published_year: 1
+  published_year: MyString
   description: MyText
   rating: 9.99
   price: 9.99
@@ -11,13 +11,12 @@ one:
   genre: MyString
   on_sale: false
   sale_price: 9.99
-  Author: one
-  OrderBook: one
+  author: one
 
 two:
   title: MyString
   isbn: MyString
-  published_year: 1
+  published_year: MyString
   description: MyText
   rating: 9.99
   price: 9.99
@@ -25,5 +24,4 @@ two:
   genre: MyString
   on_sale: false
   sale_price: 9.99
-  Author: two
-  OrderBook: two
+  author: two

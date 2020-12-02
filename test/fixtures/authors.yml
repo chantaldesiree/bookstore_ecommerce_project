@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  Book: one
 
 two:
   name: MyString
-  Book: two
