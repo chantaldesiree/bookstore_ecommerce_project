@@ -1,12 +1,12 @@
 <div class="column mt-5">
    <h2 class="title is-2 mt-5"><%= @genre.name %></h2>
    <p class="mb-5">
-      This author wrote <%= @genre.books.count %> of the top 100 books.
+      This genre contains <%= @genre.books.count %> of the top 100 books.
    </p>
    <div class="content">
       <ul>
          <% @genre.books.each do |genre| %>
-         <li><%= link_to book.title, genre %></li>
+         <li><%= link_to genre.title, genre %></li>
          <% end %>
       </ul>
    </div>

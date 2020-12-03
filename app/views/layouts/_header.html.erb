@@ -1,69 +1,61 @@
 <% @genres = Genre.all %>
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/">
-      <%= image_tag ("TTP-Logo.png")%>
-    </a>
-
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
-
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a href="/books"class="navbar-item">
-        Books
-      </a>
-
-      <a href="/authors"class="navbar-item">
-        Authors
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Genres
+    <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+            <%= image_tag ("TTP-Logo.png")%>
         </a>
 
-        <div class="navbar-dropdown">
-          <% @genres.each do |g| %>
-            <a class="navbar-item">
-            <%= g.name %>
-          </a>
-          <% end %>
-        </div>
-      </div>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="navbar-item">
-          <div class="control">
-            <input class="input" type="text" placeholder="Search by Book or Author">
-          </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a href="/books" class="navbar-item">
+                Books
+            </a>
+
+            <a href="/authors" class="navbar-item">
+                Authors
+            </a>
+
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">
+                    Genres
+                </a>
+
+                <div class="navbar-dropdown">
+                    <% @genres.each do |g| %>
+                    <a class="navbar-item" href="/genres/<%= g.id %>">
+                        <%= g.name %>
+                    </a>
+                    <% end %>
+                </div>
+            </div>
         </div>
-        <div class="navbar-item">
-          <p class="control">
-            <span class="select">
-              <select>
-                <%= @genres.each do |g| %>
-                  <option><%= g.name %></option>
+        <% names = [] %>
+        <% @genres.each do |g| %>
+        <% names.push g.name %>
+        <% end %>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <%= form_with(url: search_books_path, method: :get, local: true) do |f| %>
+                <div class="field">
+                    <div class="columns is-gapless">
+                        <div class="column is-half"><%= text_field_tag(:keywords, nil, class: "input", placeholder: "Search for Books") %></div>
+                        <div class="select"><%= f.select :category, options_for_select(names, params[:category]), { include_blank: 'Genres'} %></div>
+                        <div class="column"><%= submit_tag("🔎", class: "button is-primary") %></div>
+                    </div>
+                </div>
                 <% end %>
-              </select>
-            </span>
-          </p>
+
+                <a class="button is-primary" href="/cart">
+                    🛒
+                </a>
+            </div>
         </div>
-        <div class="buttons">
-          <a class="button is-primary">
-            🔍
-          </a>
-          <a class="button is-primary" href="/cart">
-            🛒
-          </a>
-        </div>
-      </div>
     </div>
-  </div>
 </nav>

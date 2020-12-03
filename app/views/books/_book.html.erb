@@ -30,7 +30,7 @@
          <div class="card-footer">
             <% if book.on_sale %>
             <p class="card-footer-item is-size-6 price-box">
-               <span class="mr-1">Price:</span> <span class="mr-1"><del><%= number_to_currency(book.price) %></del></span> <span class="red-text"><%= number_to_currency(book.sale_price) %>
+               <span class="mr-1">Price:</span> <span class="mr-1"><del><%= number_to_currency(book.price) %></del></span> <span><strong class="on-sale-text"><%= number_to_currency(book.sale_price) %></strong>
             </p>
             <% else %>
             <p class="card-footer-item is-size-6 price-box">

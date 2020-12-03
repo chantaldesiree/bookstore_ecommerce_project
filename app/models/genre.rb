@@ -1,3 +1,5 @@
 class Genre < ApplicationRecord
-  belongs_to :books
+  has_many :books
+  has_many :authors, through: :books
+
 end

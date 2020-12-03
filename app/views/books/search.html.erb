@@ -1,0 +1,17 @@
+<div class="mt-5">
+    <div class="pt-5">
+    <div class="content">
+      <div class="title is-3">There are <%= @count.count %> books that match your search.</div>
+        <ul>
+          <% @books.each do |b| %>
+            <li><%= b.title %></li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+
+<div class="columns is-centered mt-5">
+    <div class="column is-half has-text-centered">
+        <%=paginate(@books) %>
+    </div>
+</div>

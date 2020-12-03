@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
   belongs_to :author
-  has_many :genre
+  belongs_to :genre
+
 
   has_one_attached :image
 

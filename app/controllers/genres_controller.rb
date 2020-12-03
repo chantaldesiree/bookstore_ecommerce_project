@@ -1,6 +1,6 @@
 class GenresController < ApplicationController
   def index
-    @genres = Genre.all.page(params[:page]).per(21)
+    @genres = Genre.order("name ASC").page(params[:page]).per(21)
 
     add_breadcrumbs("Genres")
   end

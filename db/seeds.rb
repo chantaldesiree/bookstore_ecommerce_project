@@ -15,7 +15,6 @@ books = CSV.parse(csv_data, headers: true, encoding: "utf-8")
 books.each do |b|
 
  authors = Author.find_or_create_by(name: b["authors"])
-
  genres = Genre.find_or_create_by(name: b['genre'])
 
  if authors&.valid?
@@ -28,7 +27,8 @@ books.each do |b|
     rating: b['average_rating'],
     cover_art: b['image_url'],
     on_sale: Faker::Boolean.boolean,
-    genre: genres.name
+    genre_id: genres["id"]
+
   )
 
 end

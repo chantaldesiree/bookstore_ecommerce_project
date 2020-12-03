@@ -23,5 +23,13 @@ class BooksController < ApplicationController
   end
 
   def search
+    @book_genres = Genre.all
+    wildcard_search = "%#{params[:keywords]}%"
+    category_search = "#{params[:category]}"
+
+    @genre = Genre.find_by_name(category_search)
+
+    @genre ? @count = Book.joins(:genre).where('genre_id = ?', @genre.id).where("title LIKE ?", wildcard_search.downcase()) : @count = Book.joins(:genre).where("title LIKE ?", wildcard_search.downcase())
+    @genre ? @books = Book.joins(:genre).where('genre_id = ?', @genre.id).where("title LIKE ?", wildcard_search.downcase()).page(params[:page]).per(21) : @books = Book.joins(:genre).where("title LIKE ?", wildcard_search.downcase()).page(params[:page]).per(21)
   end
 end
