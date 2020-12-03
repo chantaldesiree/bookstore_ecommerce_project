@@ -1,5 +1,5 @@
 class Year < ApplicationRecord
-  has_many :books
+  belongs_to :books
 
   def self.ordered_by_books
     self.select("years.*")

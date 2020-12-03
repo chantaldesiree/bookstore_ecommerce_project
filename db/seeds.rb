@@ -4,7 +4,7 @@ require "csv"
 Book.delete_all
 Author.delete_all
 Genre.delete_all
-Year.delete_all
+Page.delete_all
 AdminUser.delete_all
 
 Page.create(
@@ -29,12 +29,11 @@ books = CSV.parse(csv_data, headers: true, encoding: "utf-8")
 books.each do |b|
  authors = Author.find_or_create_by(name: b["authors"])
  genres = Genre.find_or_create_by(name: b['genre'])
- years = Year.find_or_create_by(date: b['original_publication_year'])
 
  if authors&.valid?
   authors.books.create!(
     title: b['original_title'],
-    published_year: years["id"],
+    published_year:  b['original_publication_year'],
     description: Faker::Books::Lovecraft.paragraphs,
     isbn: b['isbn'],
     price: Faker::Number.decimal(l_digits: rand(1..2), r_digits: 2),

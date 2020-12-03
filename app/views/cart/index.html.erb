@@ -28,12 +28,12 @@
       <div class="columns level-right mt-2 mr-1">
       <% if session[:shopping_cart][book.id.to_s] %>
         <%= form_with url: cart_path(book), method: :delete do %>
-          <%= button_tag '-', {class: "card-footer-item is-size-6 add-to-cart pl-3 pr-3"} %>
+          <%= button_tag '-', {class: "button card-footer-item is-size-6 add-to-cart pl-3 pr-3"} %>
         <% end %>
 
         <%= form_with url: cart_index_path do %>
           <%= hidden_field_tag(:id, book.id) %>
-          <%= button_tag '+', {class: "card-footer-item is-size-6 add-to-cart"} %>
+          <%= button_tag '+', {class: "button card-footer-item is-size-6 add-to-cart"} %>
         <% end %>
       <% end %>
       </div>
@@ -48,5 +48,19 @@
     <div class="mt-5 title is-5 red-text has-text-right mb-0 pr-5">Subtotal: <%= number_to_currency(subtotal) %></div>
     <div class="mt-2 has-text-right mb-0 pr-5">PST: <%= number_to_currency(subtotal * 0.07) %></div>
     <div class="mt-2 has-text-right mb-0 pr-5">GST: <%= number_to_currency(subtotal * 0.05) %></div>
-    <div class="mt-2 title is-2 red-text has-text-right mb-5 pr-5">Total: <%= number_to_currency(subtotal * 1.12) %></div>
+    <div class="mt-2 title is-2 red-text has-text-right mb-5 pr-5 pb-5">Total: <%= number_to_currency(subtotal * 1.12) %>
+
+    <div class="pt-5 level-right has-text-center is-full">
+    <% if session['shopping_cart'].count > 0%>
+    <%= form_with url: root_path do %>
+      <%= button_tag 'Buy Now!', {class: "button is-primary is-large"} %>
+    <% end %>
+    <% end %>
+    </div>
+
+    </div>
+
+
+
+
     </div>
