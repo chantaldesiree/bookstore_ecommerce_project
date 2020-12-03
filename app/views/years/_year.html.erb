@@ -1,0 +1,18 @@
+<div class="mt-5">
+    <h2 class="title is-2 mt-5">Years</h2>
+    <div class="content">
+        <ul>
+            <% @years.each do |year| %>
+                <li>
+                    <%=link_to year.date, year %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+
+<div class="columns is-centered mt-5">
+    <div class="column is-half has-text-centered">
+        <%=paginate(@years) %>
+    </div>
+</div>

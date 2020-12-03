@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_03_075308) do
+ActiveRecord::Schema.define(version: 2020_12_03_091045) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -58,8 +58,10 @@ ActiveRecord::Schema.define(version: 2020_12_03_075308) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "genre_id"
+    t.integer "year_id"
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["genre_id"], name: "index_books_on_genre_id"
+    t.index ["year_id"], name: "index_books_on_year_id"
   end
 
   create_table "genres", force: :cascade do |t|

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get '/pages/:permalink' => "pages#permalink"
   resources :cart, only: %i[index create destroy]
+  resources :years, only: %i[index show]
   resources :authors, only: %i[index show]
   resources :genres, only: %i[index show]
   resources :books, only: %i[index show search] do

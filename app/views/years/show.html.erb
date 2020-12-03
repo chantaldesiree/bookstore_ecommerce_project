@@ -1,0 +1,15 @@
+<div class="column mt-5">
+   <h2 class="title is-2 mt-5"><%= @year.date %></h2>
+   <p class="mb-5">
+      <%= @year.books.count %> books available this year.
+   </p>
+   <div class="content">
+      <ul>
+         <% @year.books.each do |book| %>
+         <li><%= link_to book.title, book %></li>
+         <% end %>
+      </ul>
+   </div>
+</div>
+<div class="has-text-right"><%= link_to '...Go Back', root_path %></div>
+</div>
