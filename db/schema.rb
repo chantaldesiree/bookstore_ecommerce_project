@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_02_211538) do
+ActiveRecord::Schema.define(version: 2020_12_03_075308) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2020_12_02_211538) do
     t.decimal "rating"
     t.decimal "price"
     t.string "cover_art"
-    t.string "genre"
     t.boolean "on_sale"
     t.decimal "sale_price"
     t.integer "author_id", null: false
@@ -69,5 +68,20 @@ ActiveRecord::Schema.define(version: 2020_12_02_211538) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "pages", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.string "permalink"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.string "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "books", "authors"
+  add_foreign_key "books", "genres"
 end

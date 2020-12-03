@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  get 'pages/show'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  get '/pages/:permalink' => "pages#permalink"
   resources :cart, only: %i[index create destroy]
   resources :authors, only: %i[index show]
   resources :genres, only: %i[index show]

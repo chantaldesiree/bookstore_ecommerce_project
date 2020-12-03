@@ -5,6 +5,18 @@ Book.delete_all
 Author.delete_all
 AdminUser.delete_all
 
+Page.create(
+  title: 'About The Company',
+  content: 'Here is some information about the company. Established in 1921, this coming year will be Turn the Pages 100 years in business',
+  permalink: 'about_us',
+)
+Page.create(
+  title: 'Contact Us',
+  content: 'If you would like to get a hold of us, you can reach us at 1-204-999-9999, or email us at turnthepage@aol.com',
+  permalink: 'contact_us',
+)
+
+
 filename = Rails.root.join("db/books.csv")
 
 puts "Loading Books from CSV file: #{filename}"
