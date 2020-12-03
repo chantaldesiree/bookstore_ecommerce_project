@@ -1,0 +1,18 @@
+<div class="column mt-5">
+<h2 class="title is-2">Genres</h2>
+<ol class="ml-5">
+
+<% @genres.each do |genre| %>
+<li>
+  <%= link_to genre.name, genre %>
+</li>
+<% end %>
+
+</ol>
+
+<div class="columns is-centered mt-5">
+  <div class="column is-half has-text-centered">
+    <%= paginate(@genres) %>
+  </div>
+</div>
+</div>

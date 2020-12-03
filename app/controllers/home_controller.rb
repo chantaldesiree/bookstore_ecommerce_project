@@ -6,8 +6,6 @@ class HomeController < ApplicationController
 
     @book_on_sale = Book.includes(:author).where(:on_sale => true).order("sale_price ASC").page(params[:page]).per(4)
 
-    @genres = Genre.all
-
     add_breadcrumbs("Home")
   end
 end

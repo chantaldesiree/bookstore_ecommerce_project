@@ -1,3 +1,4 @@
+<% @genres = Genre.all %>
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a class="navbar-item" href="/">
@@ -47,7 +48,7 @@
           <p class="control">
             <span class="select">
               <select>
-                <%= Genre.all.each do |g| %>
+                <%= @genres.each do |g| %>
                   <option><%= g.name %></option>
                 <% end %>
               </select>

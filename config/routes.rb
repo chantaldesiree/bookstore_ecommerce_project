@@ -5,9 +5,12 @@ Rails.application.routes.draw do
 
   resources :cart, only: %i[index create destroy]
   resources :authors, only: %i[index show]
+  resources :genres, only: %i[index show]
   resources :books, only: %i[index show search] do
     collection do
       get "search"
+      get "new"
+      get "sale"
     end
   end
 
