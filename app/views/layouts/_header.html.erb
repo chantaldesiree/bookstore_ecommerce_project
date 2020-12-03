@@ -55,8 +55,14 @@
                     </div>
                 </div>
                 <% end %>
-
+                <% if session['shopping_cart'] == {} %>
                 <a class="button is-primary" href="/cart">
+                <% else %>
+                <a class="button is-info" href="/cart">
+                <% end %>
+                <% if session['shopping_cart'].count > 0%>
+                <%= session['shopping_cart'].count %>
+                <% end %>
                     🛒
                 </a>
             </div>
