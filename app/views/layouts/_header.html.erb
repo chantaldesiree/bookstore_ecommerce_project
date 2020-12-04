@@ -65,6 +65,13 @@
                 <% end %>
                     🛒
                 </a>
+                <% if customer_signed_in? %>
+                <p>Hello, <%= current_customer.first_name %> - <%= link_to "Sign out", destroy_customer_session_path, :method => 'delete' %>
+                <% else %>
+                <a class="button is-primary" href="/customers/sign_in">
+                Sign in
+                </a>
+                <% end %>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ Book.delete_all
 Author.delete_all
 Genre.delete_all
 Page.delete_all
+Province.delete_all
 AdminUser.delete_all
 
 Page.create(
@@ -57,5 +58,86 @@ end
 
 puts "Created #{Author.count} authors"
 puts "Created #{Book.count} books"
+
+Province.create(
+  name: 'Alberta',
+  gst: 0.05,
+  hst: 0.00,
+  pst: 0.00
+)
+Province.create(
+  name: 'British Columbia',
+  gst: 0.05,
+  hst: 0.00,
+  pst: 0.07
+)
+Province.create(
+  name: 'Manitoba',
+  gst: 0.05,
+  hst: 0.00,
+  pst: 0.07
+)
+Province.create(
+  name: 'New Brunswick',
+  gst: 0.00,
+  hst: 0.15,
+  pst: 0.00
+)
+Province.create(
+  name: 'Newfoundland and Labrador',
+  gst: 0.00,
+  hst: 0.15,
+  pst: 0.00
+)
+Province.create(
+  name: 'Nova Scotia',
+  gst: 0.00,
+  hst: 0.15,
+  pst: 0.00
+)
+Province.create(
+  name: 'Northwest Territories',
+  gst: 0.05,
+  hst: 0.00,
+  pst: 0.00
+)
+Province.create(
+  name: 'Nunavut',
+  gst: 0.05,
+  hst: 0.00,
+  pst: 0.00
+)
+Province.create(
+  name: 'Ontario',
+  gst: 0.00,
+  hst: 0.13,
+  pst: 0.00
+)
+Province.create(
+  name: 'Prince Edward Island',
+  gst: 0.00,
+  hst: 0.15,
+  pst: 0.00
+)
+Province.create(
+  name: 'Quebec',
+  gst: 0.09975,
+  hst: 0.00,
+  pst: 0.05
+)
+Province.create(
+  name: 'Saskatchewan',
+  gst: 0.05,
+  hst: 0.00,
+  pst: 0.06
+)
+Province.create(
+  name: 'Yukon',
+  gst: 0.05,
+  hst: 0.00,
+  pst: 0.00
+)
+
+
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
