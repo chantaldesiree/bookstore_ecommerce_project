@@ -1,0 +1,11 @@
+<div class="column mt-5">
+   <h2 class="title is-2 mt-5"><%= @customer.first_name %> <%= @customer.last_name %></h2>
+   <p class="mb-5"><%= @customer.address_line_1 %></p>
+   <p class="mb-5"><%= @customer.address_line_2 %></p>
+   <p class="mb-5"><%= @customer.city %></p>
+   <p class="mb-5"><%= @customer.province.name %></p>
+   <p class="mb-5"><%= @customer.postal_code %></p>
+   <p class="mb-5"><%= @customer.email %></p>
+</div>
+<div class="has-text-right"><%= link_to '...Go Back', root_path %></div>
+</div>

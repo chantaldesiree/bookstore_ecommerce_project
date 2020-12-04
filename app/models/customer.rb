@@ -4,5 +4,5 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :provinces
+  belongs_to :province
 end

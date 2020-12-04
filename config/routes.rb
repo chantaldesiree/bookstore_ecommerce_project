@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :customers, controllers: { registrations: "registrations" }
+  devise_for :customers, controllers: { registrations: "registrations"}
   get 'pages/show'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get '/pages/:permalink' => "pages#permalink"
+  get '/customers/:id' => "customers#show"
+
+
   resources :cart, only: %i[index create destroy]
   resources :years, only: %i[index show]
   resources :authors, only: %i[index show]
