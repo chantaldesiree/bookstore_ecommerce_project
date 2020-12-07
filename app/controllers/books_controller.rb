@@ -29,7 +29,7 @@ class BooksController < ApplicationController
 
     @genre = Genre.find_by_name(category_search)
 
-    @genre ? @count = Book.joins(:genre).where('genre_id = ?', @genre.id).where("title LIKE ?", wildcard_search.downcase()) : @count = Book.joins(:genre).where("title LIKE ?", wildcard_search.downcase())
-    @genre ? @books = Book.joins(:genre).where('genre_id = ?', @genre.id).where("title LIKE ?", wildcard_search.downcase()).page(params[:page]).per(21) : @books = Book.joins(:genre).where("title LIKE ?", wildcard_search.downcase()).page(params[:page]).per(21)
+    @genre ? @count = Book.where('genre_id = ?', @genre.id).where("title LIKE ?", wildcard_search.downcase()) : @count = Book.where("title LIKE ?", wildcard_search.downcase())
+    @genre ? @books = Book.where('genre_id = ?', @genre.id).where("title LIKE ?", wildcard_search.downcase()).page(params[:page]).per(21) : @books = Book.where("title LIKE ?", wildcard_search.downcase()).page(params[:page]).per(21)
   end
 end

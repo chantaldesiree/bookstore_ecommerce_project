@@ -1,9 +1,10 @@
 require "faker"
 require "csv"
 
+BookGenre.delete_all
+Genre.delete_all
 Book.delete_all
 Author.delete_all
-Genre.delete_all
 Page.delete_all
 Province.delete_all
 AdminUser.delete_all
@@ -29,23 +30,22 @@ books = CSV.parse(csv_data, headers: true, encoding: "utf-8")
 
 books.each do |b|
  authors = Author.find_or_create_by(name: b["authors"])
- genres = Genre.find_or_create_by(name: b['genre'])
+ genre = Genre.find_or_create_by(name: b['genre'])
 
- if authors&.valid?
-  authors.books.create!(
-    title: b['original_title'],
-    published_year:  b['original_publication_year'],
-    description: Faker::Books::Lovecraft.paragraphs,
-    isbn: b['isbn'],
-    price: Faker::Number.decimal(l_digits: rand(1..2), r_digits: 2),
-    rating: b['average_rating'],
-    cover_art: b['image_url'],
-    on_sale: Faker::Boolean.boolean,
-    genre_id: genres["id"]
+  if authors&.valid?
+  book = authors.books.create!(
+      title: b['original_title'],
+      published_year:  b['original_publication_year'],
+      description: Faker::Books::Lovecraft.paragraphs,
+      isbn: b['isbn'],
+      price: Faker::Number.decimal(l_digits: rand(1..2), r_digits: 2),
+      rating: b['average_rating'],
+      cover_art: b['image_url'],
+      on_sale: Faker::Boolean.boolean
 
-  )
-
-end
+    )
+    end
+    BookGenre.create(book: book, genre: genre)
 next
 end
 
@@ -58,6 +58,9 @@ end
 
 puts "Created #{Author.count} authors"
 puts "Created #{Book.count} books"
+puts "Created #{Genre.count} genres"
+puts "Created #{BookGenre.count} bookgenres"
+
 
 Province.create(
   name: 'Alberta',

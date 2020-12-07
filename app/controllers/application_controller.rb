@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
   before_action :initialize_session, :set_breadcrumbs
   helper_method :cart
 

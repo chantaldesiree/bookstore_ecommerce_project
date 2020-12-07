@@ -1,18 +1,18 @@
 ActiveAdmin.register Genre do
 
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-   permit_params :name
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:name]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  permit_params :name, book_genres: [:id, :book_id, :genre_id, :_destroy]
+
+  index do
+    selectable_column
+    column :id
+    column :name
+    column :book do |buks|
+      buks.books.map { |b| b.title }.join(", ").html_safe
+    end
+    column :created_at
+    column :updated_at
+    actions
+  end
+
 
 end
