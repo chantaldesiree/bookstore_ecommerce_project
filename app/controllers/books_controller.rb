@@ -18,10 +18,6 @@ class BooksController < ApplicationController
     add_breadcrumbs(@book.title)
   end
 
-  def sale
-    @books_sale = Book.includes(:author).where(:on_sale => true).order("sale_price ASC").page(params[:page]).per(21)
-  end
-
   def search
     @book_genres = Genre.all
     wildcard_search = "%#{params[:keywords]}%"
@@ -31,5 +27,8 @@ class BooksController < ApplicationController
 
     @genre ? @count = Book.where('genre_id = ?', @genre.id).where("title LIKE ?", wildcard_search.downcase()) : @count = Book.where("title LIKE ?", wildcard_search.downcase())
     @genre ? @books = Book.where('genre_id = ?', @genre.id).where("title LIKE ?", wildcard_search.downcase()).page(params[:page]).per(21) : @books = Book.where("title LIKE ?", wildcard_search.downcase()).page(params[:page]).per(21)
+
+    add_breadcrumbs("Books", books_path)
+    add_breadcrumbs("Search")
   end
 end

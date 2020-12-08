@@ -1,0 +1,16 @@
+<nav class="breadcrumb has-succeeds-separator pt-5" aria-label="breadcrumbs">
+  <ul>
+    <li class="breadcrumb-item"><a href="/">Home</a></li>
+    <% @breadcrumbs.each do |breadcrumb| %>
+      <% if breadcrumb[:path].nil?%>
+        <li class="breadcrumb-item active" aria-current="page">
+          <%= breadcrumb[:label] %>
+        </li>
+      <% else %>
+        <li class="breadcrumb-item">
+          <%= link_to breadcrumb[:label], breadcrumb[:path] %>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+</nav>

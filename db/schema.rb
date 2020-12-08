@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_015323) do
+ActiveRecord::Schema.define(version: 2020_12_08_185853) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -89,8 +89,10 @@ ActiveRecord::Schema.define(version: 2020_12_05_015323) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "genre_id"
     t.integer "year_id"
+    t.integer "orderbook_id"
     t.index ["author_id"], name: "index_books_on_author_id"
     t.index ["genre_id"], name: "index_books_on_genre_id"
+    t.index ["orderbook_id"], name: "index_books_on_orderbook_id"
     t.index ["year_id"], name: "index_books_on_year_id"
   end
 
@@ -124,11 +126,14 @@ ActiveRecord::Schema.define(version: 2020_12_05_015323) do
   create_table "orderbooks", force: :cascade do |t|
     t.integer "quantity"
     t.integer "book_id"
-    t.integer "order_id"
     t.decimal "total"
     t.decimal "order_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "orders_id"
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_orderbooks_on_order_id"
+    t.index ["orders_id"], name: "index_orderbooks_on_orders_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -139,6 +144,9 @@ ActiveRecord::Schema.define(version: 2020_12_05_015323) do
     t.decimal "hst"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "customer_id"
+    t.boolean "paid"
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   create_table "pages", force: :cascade do |t|
@@ -163,4 +171,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_015323) do
   add_foreign_key "book_genres", "genres"
   add_foreign_key "books", "authors"
   add_foreign_key "books", "genres"
+  add_foreign_key "books", "orderbooks"
+  add_foreign_key "orderbooks", "orders"
+  add_foreign_key "orderbooks", "orders", column: "orders_id"
+  add_foreign_key "orders", "customers"
 end

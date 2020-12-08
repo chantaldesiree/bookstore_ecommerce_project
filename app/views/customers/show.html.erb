@@ -1,11 +1,20 @@
 <div class="column mt-5">
    <h2 class="title is-2 mt-5"><%= @customer.first_name %> <%= @customer.last_name %></h2>
-   <p class="mb-5"><%= @customer.address_line_1 %></p>
+   <p class="mb-5"><strong>Address: </strong><%= @customer.address_line_1 %></p>
    <p class="mb-5"><%= @customer.address_line_2 %></p>
-   <p class="mb-5"><%= @customer.city %></p>
-   <p class="mb-5"><%= @customer.province.name %></p>
-   <p class="mb-5"><%= @customer.postal_code %></p>
-   <p class="mb-5"><%= @customer.email %></p>
+   <p class="mb-5"><strong>City: </strong><%= @customer.city %></p>
+   <p class="mb-5"><strong>Province: </strong><%= @customer.province.name %></p>
+   <p class="mb-5"><strong>Postal Code: </strong><%= @customer.postal_code %></p>
+   <p class="mb-5"><strong>Email: </strong><%= @customer.email %></p>
+
+   <h2 class="title is-3">Previous Orders:</h2>
+   <ul>
+      <% @orders.each do |order| %>
+            <li>
+               <%=link_to "Order ##{order.id}", order %>
+            </li>
+      <% end %>
+   </ul>
 </div>
 <div class="has-text-right"><%= link_to '...Go Back', root_path %></div>
 </div>

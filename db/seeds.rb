@@ -7,6 +7,8 @@ Book.delete_all
 Author.delete_all
 Page.delete_all
 Province.delete_all
+Orderbook.delete_all
+Order.delete_all
 AdminUser.delete_all
 
 Page.create(
@@ -44,8 +46,8 @@ books.each do |b|
       on_sale: Faker::Boolean.boolean
 
     )
-    end
-    BookGenre.create(book: book, genre: genre)
+  end
+  BookGenre.create(book: book, genre: genre)
 next
 end
 

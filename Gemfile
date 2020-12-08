@@ -10,6 +10,8 @@ gem 'httparty', '~> 0.13.7'
 gem 'image_processing'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'kaminari'
+source 'https://rubygems.org'
+gem 'stripe', '~> 5.28.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.4'

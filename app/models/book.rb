@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   accepts_nested_attributes_for :book_genres, allow_destroy: true
 
   has_many :orderbooks
+  has_many :orders, through: :orderbooks
 
   has_one_attached :image
 

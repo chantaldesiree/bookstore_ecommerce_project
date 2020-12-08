@@ -1,0 +1,18 @@
+<div class="mt-5">
+    <h2 class="title is-2 mt-5">Orders</h2>
+    <div class="content">
+        <ul>
+            <% @orders.each do |order| %>
+                <li>
+                    <%=link_to "Order ##{order.id}", order %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+
+<div class="columns is-centered mt-5">
+    <div class="column is-half has-text-centered">
+        <%=paginate(@orders) %>
+    </div>
+</div>

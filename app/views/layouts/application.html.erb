@@ -7,10 +7,15 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
   <body>
     <%= render "layouts/header" %>
     <div class="container-padding">
+    <%= render 'layouts/breadcrumb'%>
+    <% if flash[:notice] %>
+      <p><%= flash[:notice] %></p>
+    <% end %>
     <%= yield %>
     </div>
     <%= render "layouts/footer" %>

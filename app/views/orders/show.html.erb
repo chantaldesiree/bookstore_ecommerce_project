@@ -1,0 +1,26 @@
+<div class="mt-5 pt-5">
+    <h2 class="title is-2 mt-5">Order <%= @order.id %></h2>
+    <div class="content">
+        <ul><% i = 0 %>
+            <% @order.books.each do |book| %>
+                <li>
+                    <%=link_to "#{book.title}", book %> >> Quantity: <%= @order.orderbooks[i].quantity %> || Price: <%= number_to_currency(@order.orderbooks[i].order_price) %> || Subtotal: <%= number_to_currency(@order.orderbooks[i].total) %>
+                </li>
+                <% i = i+1%>
+            <% end %>
+        </ul>
+        <div class="ml-3">
+          <p><strong>Subtotal: </strong><%=number_to_currency(@order.subtotal)%></p>
+          <% if @order.order_gst > 0 %>
+          <p><strong>GST: </strong><%=number_to_currency(@order.order_gst)%></p>
+          <%end%>
+          <% if @order.order_pst > 0 %>
+          <p><strong>PST: </strong><%=number_to_currency(@order.order_pst)%></p>
+          <%end%>
+          <% if @order.order_hst > 0 %>
+          <p><strong>HST: </strong><%=number_to_currency(@order.order_hst)%></p>
+          <%end%>
+          <p><strong>Total: </strong><%=number_to_currency(@order.total)%></p>
+        </div>
+    </div>
+</div>

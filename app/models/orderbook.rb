@@ -5,18 +5,18 @@ class Orderbook < ApplicationRecord
 
   def current_price
     if persisted?
-      self[:current_price]
+      self[:order_price]
     else
       book.price
     end
   end
 
   def total
-    unit_price * quantity
+    order_price * quantity
   end
 
-  def set_current_price
-    self[:current_price] = current_price
+  def set_order_price
+    self[:order_price] = order_price
   end
 
   def set_total
