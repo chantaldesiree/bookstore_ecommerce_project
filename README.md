@@ -1,24 +1,15 @@
-# README
+# ECOMMERCE BOOKSTORE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project is an ecommerce website for a bookstore.
+You have the ability to search through the books alphabetically, by date added or by rating.
+Books can be added and removed from the users cart.
+Once finished you can checkout using the Stripe service.
 
-Things you may want to cover:
+Created using Ruby version 2.7.1 and Rails 6.1.1.
 
-* Ruby version
+The bookstore's database is created using a seed file. 'seed.rb' in the db folder.
+This file reads through a .csv of the top 100 books on goodreads and populates them into the database.
+It is initialized using the 'rails db:seed' command.
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+An ActiveAdmin dashboard allows the webmaster to add/remove/edit all products in the database and filter them into genres.
+This dashboard also allows them to edit their 'Contact' and 'About Us' pages with no programming knowledge required.
