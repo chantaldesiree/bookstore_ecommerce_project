@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_08_185853) do
+ActiveRecord::Schema.define(version: 2021_04_09_064504) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -82,18 +82,15 @@ ActiveRecord::Schema.define(version: 2020_12_08_185853) do
     t.decimal "rating"
     t.decimal "price"
     t.string "cover_art"
+    t.string "genre"
     t.boolean "on_sale"
     t.decimal "sale_price"
     t.integer "author_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "genre_id"
-    t.integer "year_id"
     t.integer "orderbook_id"
     t.index ["author_id"], name: "index_books_on_author_id"
-    t.index ["genre_id"], name: "index_books_on_genre_id"
     t.index ["orderbook_id"], name: "index_books_on_orderbook_id"
-    t.index ["year_id"], name: "index_books_on_year_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -130,10 +127,8 @@ ActiveRecord::Schema.define(version: 2020_12_08_185853) do
     t.decimal "order_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "orders_id"
     t.integer "order_id"
     t.index ["order_id"], name: "index_orderbooks_on_order_id"
-    t.index ["orders_id"], name: "index_orderbooks_on_orders_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -170,9 +165,7 @@ ActiveRecord::Schema.define(version: 2020_12_08_185853) do
   add_foreign_key "book_genres", "books"
   add_foreign_key "book_genres", "genres"
   add_foreign_key "books", "authors"
-  add_foreign_key "books", "genres"
   add_foreign_key "books", "orderbooks"
   add_foreign_key "orderbooks", "orders"
-  add_foreign_key "orderbooks", "orders", column: "orders_id"
   add_foreign_key "orders", "customers"
 end

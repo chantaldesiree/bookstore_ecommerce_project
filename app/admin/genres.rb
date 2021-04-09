@@ -1,6 +1,6 @@
 ActiveAdmin.register Genre do
 
-  permit_params :name, book_genres: [:id, :book_id, :genre_id, :_destroy]
+  permit_params :name, bookgenres: [:id, :book_id, :genre_id, :_destroy]
 
   index do
     selectable_column
