@@ -1,20 +1,26 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.0.2'
 
+gem 'railties', '~> 6.0.4', '>= 6.0.4'
 gem "bulma-rails", "~> 0.9.0"
-gem 'activeadmin'
+gem 'activeadmin', '~> 2.9'
 gem 'devise'
-gem 'httparty', '~> 0.13.7'
+gem 'httparty', '~> 0.18.1'
 gem 'image_processing'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
-gem 'kaminari'
+gem 'kaminari', '~> 1.2', '>= 1.2.1'
 source 'https://rubygems.org'
 gem 'stripe', '~> 5.28.0'
+gem 'actionview', '~> 6.0.4', '>= 6.0.4'
+gem 'actionpack'
+gem 'activesupport', '~> 6.0.4', '>= 6.0.4'
+gem 'activerecord', '~> 6.0.4', '>= 6.0.4'
+gem 'activemodel', '~> 6.0.4', '>= 6.0.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
+gem 'rails', '~> 6.0.3', '>= 6.0.4'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
